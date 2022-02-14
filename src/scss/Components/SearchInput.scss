@@ -1,0 +1,14 @@
+.search-input {
+    position: relative;
+    .clear-search {
+        position: absolute;
+        top: 0;
+        right: 0.5rem;
+        padding: 0.5rem;
+        z-index: 5;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

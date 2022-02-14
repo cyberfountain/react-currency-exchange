@@ -1,0 +1,23 @@
+@import "variables.scss";
+
+body {
+    background-color: $light-grey;
+    color: $text-color;
+}
+
+.custom-card {
+    width: 100%;
+    max-width: 40rem;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+}
+
+.inline-icon {
+    overflow: visible;
+    box-sizing: content-box;
+    height: 1em;
+    vertical-align: -0.125em;
+}
