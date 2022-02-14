@@ -22,13 +22,10 @@ function App() {
             })
     }, [])
 
-    function getSelectedCurrency() {
-    }
-
     return (<div className='container'>
         <Header />
         <div className='custom-card'>
-            <Calculator currency={getSelectedCurrency()} />
+            <Calculator />
             <CurrencyTable />
         </div>
     </div >)
