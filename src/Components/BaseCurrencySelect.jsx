@@ -31,6 +31,7 @@ function BaseCurrencySelect() {
                 }))
             })
     }
+
     function renderOptions() {
         return state.currencies.map(cc => {
             return <option
