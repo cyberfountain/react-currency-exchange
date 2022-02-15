@@ -4,40 +4,33 @@ import { GetKey } from '../Helpers/Helpers.js'
 
 function BaseCurrencySelect() {
     const { state, setState } = useMainState()
-    const [input, setInput] = useState({
-        code: null,
-        country: null
-    })
 
     function handleOnChange(e) {
         const value = e.target.value.split('|')
-        setInput({
+        fetchRates({
             code: value[0],
             country: value[1]
         })
     }
 
-    useEffect(() => {
-        if (input.code) {
-            fetch(`/api/v1/currency/exchange/${input.code}`, {
-                headers: {
-                    "accepts": "application/json"
-                }
+    function fetchRates(input) {
+        fetch(`/api/v1/currency/exchange/${input.code}`, {
+            headers: {
+                "accepts": "application/json"
+            }
+        })
+            .then(r => r.json())
+            .then(data => {
+                setState(prev => ({
+                    ...prev,
+                    baseCurrency: {
+                        code: input.code,
+                        country: input.country
+                    },
+                    exchangeRates: data
+                }))
             })
-                .then(r => r.json())
-                .then(data => {
-                    setState(prev => ({
-                        ...prev,
-                        baseCurrency: {
-                            code: input.code,
-                            country: input.country
-                        },
-                        exchangeRates: data
-                    }))
-                })
-        }
-    }, [input])
-
+    }
     function renderOptions() {
         return state.currencies.map(cc => {
             return <option
